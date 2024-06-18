@@ -4,6 +4,7 @@ import 'package:tech_lar/janela.dart';
 import 'package:tech_lar/lampada.dart';
 import 'package:tech_lar/porta.dart';
 import 'package:tech_lar/addComodo.dart';
+import 'package:tech_lar/login.dart';
 
 const double minWidth = 320;
 const double minHeight = 320;
@@ -72,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Olá, Fulano!',
+                          'Olá',
                           style: TextStyle(
                             color: Color.fromARGB(255, 19, 124, 199),
                             fontSize: 25,
@@ -111,6 +112,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     style: TextStyle(color: Color.fromARGB(255, 19, 124, 199)),
                   ),
                   onTap: () {},
+                ),
+                ListTile(
+                  title: Text(
+                    "Sair",
+                    style: TextStyle(color: Color.fromARGB(255, 19, 124, 199)),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginPage()),
+                    );
+                  },
                 )
               ],
             ),
