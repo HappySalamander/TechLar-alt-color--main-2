@@ -27,7 +27,7 @@ class _LampadaState extends State<Lampada> {
     "Cozinha",
     "Dispensa",
     "Garagem",
-    "Closet",
+    "Closet"
   ];
 
   final MqttService _mqttService = MqttService();
@@ -65,16 +65,16 @@ class _LampadaState extends State<Lampada> {
 
   void _sendMqttMessage(int index, bool switchState) {
     String topic = '${comodos[index]}Luz';
-    if(comodos[index] == 'Closet' || comodos[index] == 'Dispensa'){
-      if(comodos[index] == 'Closet'){
-        topic = 'QuartoCloset';
-      }else{
+    if(comodos[index] == 'Dispensa' || comodos[index] == 'Closet'){
+      if(comodos[index] == 'Dispensa'){
         topic = 'CozinhaLuzDispensa';
+      }else{
+        topic = 'QuartoClosed';
       }
     }else{
       topic = '${comodos[index]}Luz';
     }
-    String message = switchState ? 'on' : 'off';
+    String message = switchState ? '1' : '0';
     _mqttService.publishMessage(topic, message);
   }
 
