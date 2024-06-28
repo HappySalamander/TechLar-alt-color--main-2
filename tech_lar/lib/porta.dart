@@ -20,9 +20,9 @@ class _PortaState extends State<Porta> {
   bool _on = false;
   List<bool> switchesState = [false, false, false];
   List<String> comodos = [
+    "Garagem",
     "Sala",
     "Cozinha",
-    "Cozinha Fundos",
   ];
 
   final MqttService _mqttService = MqttService();
@@ -54,11 +54,11 @@ class _PortaState extends State<Porta> {
   }
 
   void _sendMqttMessage(int index, bool switchState) {
-    String topic = '${comodos[index]}Luz';
-    if(comodos[index] == 'Cozinha' || comodos[index] == 'Cozinha Fundos'){
-      if(comodos[index] == 'Cozinha'){
-        topic = 'CozinhaPortao';
-      }else{
+    String topic = '${comodos[index]}Portao';
+    if(comodos[index] == 'Garagem' || comodos[index] == 'Cozinha'){
+      if(comodos[index] == 'Garagem' ){
+        topic = 'GaragemPortao';
+      }else if(comodos[index] == 'Cozinha'){
         topic = 'CozinhaPortaFundo';
       }
     }else{
